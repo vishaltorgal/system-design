@@ -130,3 +130,118 @@ If:
 `In cloud:`
 - You don’t install manually.
 - Cloud provides it.
+
+<br>
+
+## 🏗 Horizontal vs Vertical Scaling
+
+1️⃣ ***Vertical Scaling***
+
+👉 Meaning
+- Increase power of one single server.
+- You make one machine stronger.
+
+Example
+```jsx
+1 server
+8GB RAM
+4 CPU
+
+```
+Traffic increases. So you upgrade to:
+```jsx
+1 server
+32GB RAM
+16 CPU
+```
+Same machine.
+More power.
+That is Vertical Scaling.
+
+🏢 ***Real Life Example***
+- You own a small shop.
+- More customers come.
+- Instead of opening new shops, you make the shop bigger.
+- Same shop. Bigger size.
+
+✅ ***Advantages***
+- Easy to implement
+- No code changes
+- Simple architecture
+
+❌ ***Problems***
+- Hardware limit exists
+- Very expensive
+- If server crashes → whole system down
+
+## 🔁 2️⃣ Horizontal Scaling
+
+👉 Meaning
+- Increase number of servers.
+- Instead of making one strong,
+- add more machines.
+
+`Example`
+```jsx
+1 server
+```
+`You do:`
+```jsx
+Server 1
+Server 2
+Server 3
+```
+`And add a Load Balancer in front.`
+
+```jsx
+User
+  ↓
+Load Balancer
+  ↓
+Server1
+Server2
+Server3
+```
+Traffic divided.
+
+
+🏢 ***Real Life Example**
+- Restaurant is full.
+- Instead of making kitchen bigger, you open 3 more branches.
+- Customers go to different branches.
+
+
+✅ ***Advantages***
+- Almost unlimited scaling
+- Safer
+- If one server dies, others work
+- Better for high traffic apps
+
+❌ Problems
+- More complex
+- Need Load Balancer
+- Need stateless servers
+
+| Situation                     | Use            |
+| ----------------------------- | -------------- |
+| Small app                     | Vertical       |
+| Startup growing               | Vertical first |
+| Large app (Instagram, Amazon) | Horizontal     |
+| Need high availability        | Horizontal     |
+
+
+## 🚀 How To Do It Practically?
+***Vertical Scaling in Cloud***
+
+`In AWS:`
+- Stop EC2
+- Increase instance size
+- Start again
+- Done.
+
+***Horizontal Scaling in Cloud***
+- Create multiple EC2 instances
+- Put them in Auto Scaling Group
+- Add Load Balancer
+- Enable health checks
+- Now traffic auto distributes.
