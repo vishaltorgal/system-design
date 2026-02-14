@@ -1,6 +1,12 @@
 # System Design
 
- ✅ ***What is System Design?***
+### Table of Contents
+1. [What is System Design?](#1-what-is-system-design)
+2. [What is a Load Balancer?](#2-what-is-a-load-balancer)
+3. [Horizontal vs Vertical Scaling](#3-horizontal-vs-vertical-scaling)
+
+
+## 1. ***What is System Design?***
 
 *System Design means:*
 
@@ -12,7 +18,7 @@
 - How system handles millions of users
 - How system avoids crashing
 
-## 1️⃣ Functional Requirements
+### 1️⃣ Functional Requirements
 
 *What should the system do?*
 
@@ -20,7 +26,7 @@
 - Specific features needed? (post, like, comment, follow, search, notifications, stories?)
 - Any real-time needs? (chat, live comments)
 
-## 2️⃣ Non Functional Requirements
+### 2️⃣ Non Functional Requirements
 
 *How should the system behave?*
 
@@ -30,7 +36,7 @@
 - Should scale automatically
 
 
-## 🧠 What is a Load Balancer?
+## 2. ***What is a Load Balancer?***
 
 Distributes incoming traffic across multiple servers so that no single server gets overloaded.
 
@@ -133,7 +139,7 @@ If:
 
 <br>
 
-## 🏗 Horizontal vs Vertical Scaling
+## 3. Horizontal vs Vertical Scaling
 
 1️⃣ ***Vertical Scaling***
 
