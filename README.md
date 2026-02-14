@@ -5,6 +5,7 @@
 2. [What is a Load Balancer?](#2-what-is-a-load-balancer)
 3. [Horizontal vs Vertical Scaling](#3-horizontal-vs-vertical-scaling)
 
+<br>
 
 ## 1. ***What is System Design?***
 
@@ -35,6 +36,7 @@
 - Should never lose data
 - Should scale automatically
 
+<br>
 
 ## 2. ***What is a Load Balancer?***
 
@@ -101,6 +103,8 @@ Now system survives.
 4️⃣ You want scalability
 - Add new server → Load Balancer automatically starts using it.
 
+<br>
+
 ⚙️ ***How Does It Decide Where to Send Traffic?***
 
 *Common strategies:*
@@ -114,7 +118,7 @@ Now system survives.
 3️⃣ IP Hash
 - Same user always goes to same server.
 
-<br><br>
+<br>
 
 🛡 ***Extra Benefit: Fault Tolerance***
 
@@ -124,7 +128,7 @@ If:
 - Users don’t even know server crashed.
 - That is called ***High Availability.***
 
-<br><br>
+<br>
 
 🌍 ***Real World Load Balancers***
 
@@ -180,7 +184,9 @@ That is Vertical Scaling.
 - Very expensive
 - If server crashes → whole system down
 
-## 🔁 2️⃣ Horizontal Scaling
+<br>
+
+2️⃣ ***Horizontal Scaling***
 
 👉 Meaning
 - Increase number of servers.
@@ -210,18 +216,22 @@ Server3
 ```
 Traffic divided.
 
+<br>
 
-🏢 ***Real Life Example**
+🏢 ***Real Life Example***
 - Restaurant is full.
 - Instead of making kitchen bigger, you open 3 more branches.
 - Customers go to different branches.
 
+<br>
 
 ✅ ***Advantages***
 - Almost unlimited scaling
 - Safer
 - If one server dies, others work
 - Better for high traffic apps
+
+<br>
 
 ❌ Problems
 - More complex
@@ -235,6 +245,7 @@ Traffic divided.
 | Large app (Instagram, Amazon) | Horizontal     |
 | Need high availability        | Horizontal     |
 
+<br>
 
 ## 🚀 How To Do It Practically?
 ***Vertical Scaling in Cloud***
