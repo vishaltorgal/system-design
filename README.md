@@ -5,10 +5,14 @@
 2. [What is a Load Balancer?](#2-what-is-a-load-balancer)
 3. [Horizontal vs Vertical Scaling](#3-horizontal-vs-vertical-scaling)
 4. [Cache](#4-cache)
+5. [API Gateway](#5-api-gateway)
 
 <br>
 
-## 1. ***What is System Design?***
+## 1. What is System Design?
+
+<img width="756" height="383" alt="image" src="https://github.com/user-attachments/assets/194108f7-cab8-4ee3-9ab5-968c113fadbc" />
+
 
 *System Design means:*
 
@@ -39,9 +43,12 @@
 
 <br>
 
-## 2. ***What is a Load Balancer?***
+## 2. What is a Load Balancer?
 
 Distributes incoming traffic across multiple servers so that no single server gets overloaded.
+
+<img width="690" height="354" alt="image" src="https://github.com/user-attachments/assets/3f76f492-edb0-4190-8134-6f9dd4a2e612" />
+
 
 💡 ***Real Life Example***
   *Imagine:*
@@ -145,6 +152,9 @@ If:
 <br>
 
 ## 3. Horizontal vs Vertical Scaling
+
+<img width="698" height="332" alt="image" src="https://github.com/user-attachments/assets/483d2087-aa50-42c1-86d9-f4515184188b" />
+
 
 1️⃣ ***Vertical Scaling***
 
@@ -265,11 +275,13 @@ Traffic divided.
 - Now traffic auto distributes.
 
 
-## 4. ***Cache***
+## 4. Cache
 
 Cache is a temporary, high-speed storage layer that stores frequently accessed data so your system doesn’t have to fetch it again from a slower source like a database.
 
 👉 Goal: Make system faster + reduce load on database
+
+<img width="345" height="108" alt="image" src="https://github.com/user-attachments/assets/d7675e1c-e9b8-41b2-8d9d-63e038613c0f" />
 
 
 🔥 ***Simple Real-Life Example***
@@ -314,3 +326,94 @@ User → Load Balancer → App Server → Cache → Database
 - Popular CDN:
 - Cloudflare
 - Akamai
+
+## 5. API Gateway
+
+An API Gateway is a single entry point for all client requests in a microservices architecture.
+
+- Instead of client calling 10 different services directly
+- Client → calls → API Gateway → Gateway routes to correct service.
+
+<img width="691" height="400" alt="image" src="https://github.com/user-attachments/assets/dbc91c1f-68cd-4885-9bc3-2c17217b3848" />
+
+
+🧠 Simple Real Life Example
+
+***Think of a hotel reception.***
+- Guests do not go directly to housekeeping, kitchen, or manager.
+- They talk to reception.
+- Reception forwards the request to correct department.
+- 👉 API Gateway = Reception
+- 👉 Microservices = Different departments
+
+
+### 🏗 Where It Fits in Architecture
+```jsx
+Client (Web / Mobile)
+        ↓
+  Load Balancer
+        ↓
+   API Gateways
+        ↓
+---------------------------------
+| Auth Service                  |
+| User Service                  |
+| Payment Service               |
+| Order Service                 |
+---------------------------------
+```
+
+<br>
+
+```jsx
+Client
+   ↓
+Load Balancer
+   ↓
+API Gateway (multiple instances)
+   ↓
+Microservices
+```
+
+### 🎯 Why We Use API Gateway
+
+`Without API Gateway:`
+- Client needs to know all service URLs
+- Too many API calls
+- Security becomes complex
+
+`With API Gateway:`
+- One URL
+- Centralized security
+- Cleaner architecture
+
+### ⚡ Responsibilities of API Gateway
+
+1️⃣ Routing
+```jsx
+/users → User Service
+/orders → Order Service
+```
+
+2️⃣ Authentication & Authorization
+
+Checks token before forwarding request.
+
+Example:
+- JWT validation
+- OAuth
+
+3️⃣ Rate Limiting
+
+- Prevents abuse.
+
+Example:
+- 100 requests per minute per user.
+
+4️⃣ Load Balancing
+
+- Distributes traffic across service instances.
+
+5️⃣ Logging & Monitoring
+
+- Tracks requests and errors.
