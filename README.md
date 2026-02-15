@@ -6,6 +6,9 @@
 3. [Horizontal vs Vertical Scaling](#3-horizontal-vs-vertical-scaling)
 4. [Cache](#4-cache)
 5. [API Gateway](#5-api-gateway)
+6. [Flow Diagram](#6-flow-diagram)
+7. [Web Servers](#7-web-servers)
+8. [Reverse Proxy](#8-reverse-proxy)
 
 <br>
 
@@ -417,3 +420,203 @@ Example:
 5️⃣ Logging & Monitoring
 
 - Tracks requests and errors.
+
+
+## 6. Flow Diagram
+
+```jsx
+Client
+   ↓
+Load Balancer
+   ↓
+Web Server / Reverse Proxy
+   ↓
+API Gateway
+   ↓
+Microservices (App Servers)
+   ↓
+Database
+```
+
+| Layer         | Meaning in One Line          |
+| ------------- | ---------------------------- |
+| Client        | Sends request                |
+| Load Balancer | Chooses server               |
+| Web Server    | Accepts and forwards request |
+| API Gateway   | Secures and routes APIs      |
+| Microservices | Executes business logic      |
+| Database      | Stores data permanently      |
+
+
+## 7. Web Servers
+
+<img width="752" height="283" alt="image" src="https://github.com/user-attachments/assets/0f0f68e9-b550-4a4b-b1df-a3a08b831228" />
+
+**A Web Server is software that:**
+
+- Accepts HTTP or HTTPS requests
+- Serves static content
+- Forwards requests to backend applications
+- Manages connections efficiently
+- It is usually the first backend layer after a load balancer.
+
+### 🔵 What Exactly Is a Web Server?
+
+A web server is software running on a machine.
+
+- NGINX
+- Apache HTTP Server
+- Internet Information Services
+
+They run on Linux or Windows servers.
+
+🔥 ***Responsibilities of Web Server***
+
+1️⃣ Serve Static Content
+
+`Fast delivery of:`
+- HTML
+- CSS
+- JavaScript
+- Images
+Web servers are optimized for this.
+
+2️⃣ Reverse Proxy
+
+```jsx
+Client → Web Server → Backend App
+```
+
+3️⃣ SSL Termination
+
+- Handles HTTPS encryption.
+- Client uses HTTPS
+- Inside system may use HTTP
+- Backend does not manage certificates
+
+4️⃣ Load Distribution (Basic)
+
+Some web servers can distribute traffic across app instances.
+
+Example:
+- NGINX
+
+
+5️⃣ Security Layer
+
+Can:
+- Block bad IPs
+- Limit request size
+- Prevent DDoS at basic level
+
+🎯 When Do You Need a Web Server?
+
+`You need it when:`
+- Hosting frontend on your server
+- Want SSL termination
+- Need reverse proxy
+- Want performance optimization
+- You may not need separate one if:
+- Using CDN for frontend
+- Using managed API Gateway that handles everything
+
+## 8. Reverse Proxy
+
+<img width="662" height="389" alt="image" src="https://github.com/user-attachments/assets/dd1a7e70-c88b-4d71-8f0a-a7d4a8dc7bd1" />
+
+
+A Reverse Proxy is a server that sits between clients and backend servers and forwards client requests to the appropriate backend server.
+
+- Client never talks directly to backend.
+- It always talks to the reverse proxy first.
+
+```jsx
+Client
+   ↓
+Reverse Proxy
+   ↓
+Backend Server(s)
+   ↓
+Database
+```
+
+
+🧠 ***Simple Meaning***
+
+- Reverse Proxy = Middleman that:
+- Receives request
+- Forwards to correct backend
+- Returns response back to client
+
+***Client does NOT know:***
+
+- How many backend servers exist
+- Where they are located
+- What their IP addresses are
+
+🔥 ***Why Do We Need Reverse Proxy?***
+
+1️⃣ Security
+- Backend servers are hidden.
+
+`Instead of:`
+```jsx
+Client → App Server
+```
+
+`We do:`
+```jsx
+Client → Reverse Proxy → App Server
+```
+
+
+### 🧠 Reverse Proxy vs Load Balancer
+
+- Load balancer distributes traffic
+- Reverse proxy forwards and can also balance
+- Many reverse proxies also act as load balancers
+
+
+### Reverse Proxy vs API Gateway table
+
+| Feature                | Reverse Proxy                       | API Gateway                              |
+| ---------------------- | ----------------------------------- | ---------------------------------------- |
+| Primary Purpose        | Forward and protect backend servers | Manage and control APIs in microservices |
+| Works At               | Network / HTTP layer                | Application / API layer                  |
+| Routing                | Basic URL-based routing             | Advanced service-based routing           |
+| Authentication         | Basic (IP allow/deny)               | JWT, OAuth, token validation             |
+| Rate Limiting          | Basic                               | Advanced per user / per API              |
+| Response Aggregation   | ❌ No                                | ✅ Yes                                    |
+| API Versioning         | ❌ No                                | ✅ Yes                                    |
+| Logging & Monitoring   | Basic                               | Advanced analytics                       |
+| Microservices Friendly | Limited                             | Designed for microservices               |
+| Example Tools          | NGINX, HAProxy                      | Amazon API Gateway, Kong                 |
+
+
+### 🧠 Simple Meaning
+
+`Reverse Proxy`
+→ Protects backend and forwards traffic.
+
+`API Gateway`
+→ Controls APIs and applies business-level policies.
+
+
+### 🏗 How They Fit Together
+
+```jsx
+Client
+   ↓
+Reverse Proxy
+   ↓
+API Gateway
+   ↓
+Microservices
+```
+
+***In many systems:***
+
+- Reverse proxy handles SSL + basic routing
+- API Gateway handles auth + API rules
+- Reverse Proxy = Traffic manager
+- API Gateway = API manager
