@@ -11,6 +11,7 @@
 8. [Reverse Proxy](#8-reverse-proxy)
 9. [Forward Proxy](#9-forward-proxy)
 10. [Forward Proxy vs VPN](#10-forward-proxy-vs-vpn)
+11. [Kafka](#11-kafka)
 
 <br>
 
