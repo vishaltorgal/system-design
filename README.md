@@ -9,6 +9,8 @@
 6. [Flow Diagram](#6-flow-diagram)
 7. [Web Servers](#7-web-servers)
 8. [Reverse Proxy](#8-reverse-proxy)
+9. [Forward Proxy](#9-forward-proxy)
+10. [Forward Proxy vs VPN](#10-forward-proxy-vs-vpn)
 
 <br>
 
@@ -620,3 +622,80 @@ Microservices
 - API Gateway handles auth + API rules
 - Reverse Proxy = Traffic manager
 - API Gateway = API manager
+
+
+## 9. Forward Proxy
+
+A Forward Proxy is a server that sits between a client and the internet and sends requests on behalf of the client.
+
+👉 It protects or controls the client side.
+
+`Instead of:`
+```jsx
+Client → Website
+```
+
+`It becomes:`
+```jsx
+Client → Forward Proxy → Website
+```
+
+🔥 ***Why Use Forward Proxy?***
+1️⃣ Privacy / Anonymity
+
+Website cannot see client’s real IP.
+
+***Common example:***
+- Tor
+
+2️⃣ Corporate Control
+
+In companies:
+- Employees cannot access:
+- Social media
+- Specific websites
+- Certain external services
+- All traffic goes through a forward proxy.
+
+3️⃣ Caching
+
+If 100 employees download same file:
+- Proxy caches it
+- Next users get it faster.
+
+4️⃣ Security Monitoring
+
+`Company can:`
+- Monitor traffic
+- Block malicious websites
+- Scan downloads
+
+🔥 ***Forward Proxy vs Reverse Proxy***
+
+| Feature  | Forward Proxy   | Reverse Proxy   |
+| -------- | --------------- | --------------- |
+| Protects | Clients         | Servers         |
+| Position | Client side     | Server side     |
+| Hides    | Client IP       | Server IP       |
+| Used By  | Companies, ISPs | Backend systems |
+
+
+🧠 ***Real-Life Example***
+
+- Forward Proxy = Company security gate before employees go outside.
+- Reverse Proxy = Security gate before visitors enter company.
+
+
+## 10. Forward Proxy vs VPN
+
+| Feature          | Forward Proxy                       | VPN                               |
+| ---------------- | ----------------------------------- | --------------------------------- |
+| What It Protects | Client identity for specific apps   | Entire device internet traffic    |
+| Works At         | Application level                   | Network level                     |
+| Traffic Coverage | Only configured apps (browser etc.) | All apps and system traffic       |
+| Encryption       | Not always encrypted                | Fully encrypted tunnel            |
+| IP Hiding        | Hides IP from destination server    | Hides IP + encrypts data from ISP |
+| Setup Level      | App or browser configuration        | OS level or device level          |
+| Use Case         | Corporate filtering, caching        | Privacy, security on public WiFi  |
+| Performance      | Faster, lightweight                 | Slightly slower due to encryption |
+| Control          | Granular control per request        | Full device routing               |
