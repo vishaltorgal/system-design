@@ -4,6 +4,7 @@
 1. [What is System Design?](#1-what-is-system-design)
 2. [What is a Load Balancer?](#2-what-is-a-load-balancer)
 3. [Horizontal vs Vertical Scaling](#3-horizontal-vs-vertical-scaling)
+4. [Cache](#4-cache)
 
 <br>
 
@@ -262,3 +263,54 @@ Traffic divided.
 - Add Load Balancer
 - Enable health checks
 - Now traffic auto distributes.
+
+
+## 4. ***Cache***
+
+Cache is a temporary, high-speed storage layer that stores frequently accessed data so your system doesn’t have to fetch it again from a slower source like a database.
+
+👉 Goal: Make system faster + reduce load on database
+
+
+🔥 ***Simple Real-Life Example***
+
+- Imagine you run a tea shop.
+- Kitchen (Database) → Takes time to prepare tea.
+- Counter shelf (Cache) → Ready-made tea kept for quick serving.
+- If 10 customers order the same tea:
+- Without cache → Kitchen makes 10 times.
+- With cache → Make once, serve 9 times quickly.
+
+That’s caching.
+
+```jsx
+User → Load Balancer → App Server → Cache → Database
+```
+
+***Flow:***
+- User requests data.
+- App checks cache first.
+- If found → return instantly.
+- If not → fetch from DB, store in cache, then return.
+
+⚡ ***Why We Use Cache***
+- Reduce database load
+- Improve response time
+- Handle high traffic
+- Reduce server cost
+
+
+### 🗂 ***Types of Caching***
+
+1️⃣ Client-Side Cache
+
+- Stored in browser
+- Example: images, CSS
+
+2️⃣ CDN Cache
+
+- Stored in edge servers globally
+- Example: static files
+- Popular CDN:
+- Cloudflare
+- Akamai
