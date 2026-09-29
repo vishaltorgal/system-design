@@ -713,12 +713,12 @@ If 100 employees download same file:
 `Back-of-the-envelope estimations`: Roughly estimate traffic, storage, and bandwidth needs to guide your design choices.
 
 ### Memo
-CDN          → "Serve cached content quickly"
-Load Balancer → "Distribute requests"
-Web Server    → "Serve website/static files"
-API Server    → "Run backend/business logic"
-Database      → "Store data"
-Redis         → "Cache frequently accessed data"
+- CDN          → "Serve cached content quickly"
+- Load Balancer → "Distribute requests"
+- Web Server    → "Serve website/static files"
+- API Server    → "Run backend/business logic"
+- Database      → "Store data"
+- Redis         → "Cache frequently accessed data"
 
 ### Web server → frontend
 `Example 1: Web Server gets heavy load`
