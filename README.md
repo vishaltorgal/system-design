@@ -735,7 +735,7 @@ logo.png
 
 Use a CDN and/or add more web-server instances:
 ```jsx
- Users
+                    Users
                       ↓
                      CDN
                       ↓
@@ -933,9 +933,10 @@ The database isn't queried for every request.
           |                    ↓
           |                Database
 
-  ### Redis alternatives/products
 
-  | Product                                 | Type                       | Common use                               |
+### Redis alternatives/products
+
+| Product                                 | Type                       | Common use                               |
 | --------------------------------------- | -------------------------- | ---------------------------------------- |
 | **Redis**                               | In-memory data store       | Cache, sessions, rate limiting, counters |
 | **Amazon ElastiCache for Redis/Valkey** | Managed AWS service        | Redis/Valkey caching                     |
