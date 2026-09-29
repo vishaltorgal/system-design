@@ -734,7 +734,8 @@ app.css
 logo.png
 
 Use a CDN and/or add more web-server instances:
-                    Users
+```jsx
+ Users
                       ↓
                      CDN
                       ↓
@@ -745,6 +746,8 @@ Use a CDN and/or add more web-server instances:
               │ Web 2        │
               │ Web 3        │
               └──────────────┘
+```
+                   
 
 For static React assets, a CDN is often the bigger optimization because the same files can be cached and served from edge locations.
 
