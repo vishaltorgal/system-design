@@ -944,3 +944,79 @@ The database isn't queried for every request.
 | **Google Memorystore**                  | Managed GCP service        | Redis/Valkey caching                     |
 | **Azure Managed Redis**                 | Managed Azure service      | Redis-compatible caching                 |
 | **Memcached**                           | In-memory cache            | Simple caching                           |
+
+
+### API Gateway
+API Gateway sits between the frontend/client and your backend services.
+
+```jsx
+                    USER
+                     |
+                     ↓
+              React Frontend
+                     |
+                     | API request
+                     ↓
+               API GATEWAY
+                     |
+                     ↓
+              LOAD BALANCER
+                     |
+          ┌──────────┼──────────┐
+          ↓          ↓          ↓
+       API 1       API 2       API 3
+          |          |          |
+          └──────────┼──────────┘
+                     ↓
+                   Redis
+                     ↓
+                 Database
+```
+
+### API Gateway does
+- Authentication
+- Authorization
+- Rate limiting
+- API routing
+- Logging
+
+
+### Small/medium architecture
+```jsx
+                    React
+                      |
+                      ↓
+                API Gateway
+                      |
+                      ↓
+                Load Balancer
+                      |
+          ┌───────────┼───────────┐
+          ↓           ↓           ↓
+       User API     Job API    Order API
+```
+
+### Large microservices architecture
+```jsx
+                    API Gateway
+                         |
+          ┌──────────────┼──────────────┐
+          ↓              ↓              ↓
+     User Service    Job Service    Order Service
+          ↓              ↓              ↓
+      LB/Service      LB/Service      LB/Service
+       /     \         /     \         /     \
+     U1      U2      J1      J2      O1      O2
+```
+
+### Common API Gateway
+
+| API Gateway              | Provider        | Common use                                |
+| ------------------------ | --------------- | ----------------------------------------- |
+| **Amazon API Gateway**   | AWS             | APIs, authentication, throttling, routing |
+| **Azure API Management** | Microsoft Azure | API management and gateway                |
+| **Apigee**               | Google Cloud    | Enterprise API management                 |
+| **Kong Gateway**         | Kong            | API gateway, microservices                |
+| **NGINX**                | F5/NGINX        | API gateway/reverse proxy                 |
+| **Tyk**                  | Tyk             | API management and gateway                |
+| **Spring Cloud Gateway** | VMware/Spring   | Java/Spring microservices                 |
